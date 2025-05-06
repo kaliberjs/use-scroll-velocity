@@ -6,10 +6,10 @@
 - run `git push --tags`
 - Send everybody an email to introduce them to your library!
 
-# Use scroll velocity
+# useScrollVelocity
 A library that returns an immutable value that signifies the users scroll velocity.
 
-It returns a positive integer on down scroll and a negative integer on up scroll behavior.
+It returns a positive float on down scroll and a negative float on up scroll behavior.
 The returned value is lerped, the lerp speed is `0.1` by default but can be overwritten by passing the `lerpSpeed` prop, if you need additional smoothing functionality you should either use your own function or use it in conjunction with ThreeJS Math utils like lerp.
 
 Example with built in lerp:
@@ -49,7 +49,8 @@ function R3FComponent() {
     const meshRef = React.useRef()
 
     useFrame(() => {
-        meshRef.current.rotation.z += scrollVelocity
+        const normalizedVelocity = scrollVelocity * 0.01
+        meshRef.current.rotation.z += normalizedVelocity
     })
 
     return <mesh ref={meshRef}><boxMesh /></mesh>
