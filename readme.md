@@ -25,7 +25,7 @@ const scrollVelocity = useScrollVelocity()
 
 const THREELerp = THREE.MathUtils.lerp(
     meshRef.current.material.uniforms.uScrollVelocity.value,
-    scrollVelocity, 
+    scrollVelocity.current,
     lerpSpeed
 )
 ```
@@ -49,7 +49,7 @@ function R3FComponent() {
     const meshRef = React.useRef()
 
     useFrame(() => {
-        const normalizedVelocity = scrollVelocity * 0.01
+        const normalizedVelocity = scrollVelocity.current * 0.01
         meshRef.current.rotation.z += normalizedVelocity
     })
 
