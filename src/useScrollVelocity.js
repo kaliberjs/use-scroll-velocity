@@ -1,4 +1,4 @@
-export function useScrollVelocity() {
+export function useScrollVelocity({ lerpSpeed = 0.1 } = {}) {
   const velocity = React.useRef(0)
   const rawVelocity = React.useRef(0)
 
@@ -32,7 +32,6 @@ export function useScrollVelocity() {
 
     function smoothUpdate() {
       const target = rawVelocity.current
-      const lerpSpeed = 0.1
 
       velocity.current += (target - velocity.current) * lerpSpeed
 
@@ -42,7 +41,7 @@ export function useScrollVelocity() {
     animationFrameId = requestAnimationFrame(smoothUpdate)
 
     return () => cancelAnimationFrame(animationFrameId)
-  }, [])
+  }, [lerpSpeed])
 
   return velocity
 }
