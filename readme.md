@@ -1,11 +1,3 @@
-# BEFORE YOU PUBLISH
-- Read [Libraries van Kaliber](https://docs.google.com/document/d/1FrJi-xWtKkbocyMVK5A5_hupjl5E4gD4rDvATDlxWyc/edit#heading=h.bb3md3gyf493).
-- Make sure your example works.
-- Make sure your package.json is correct. Have you change the library title?
-- Update the bin/postInstall script. It should refer to your library.
-- Update the `<title>` tag in `index.html.js`.
-- Remove 'BEFORE YOU PUBLISH' and 'PUBLISHING' from this document.
-
 # PUBLISHING
 - Make sure you are added to the kaliber organization on NPM
 - run `yarn publish`
