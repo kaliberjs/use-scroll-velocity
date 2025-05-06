@@ -14,33 +14,42 @@
 - run `git push --tags`
 - Send everybody an email to introduce them to your library!
 
-# Library title
-Short description.
+# Scroll velocity 
+A library that returns an immutable value that signifies the users scroll velocity.
+
+It returns a positive integer on down scroll and a negative integer on up scroll behavior.
+The returned value is lerped, the lerp speed is currently handled by the libary itself, if you need additional smoothing you should either use your own lerp function or use it in conjunction with ThreeJS Math utils lerp.
 
 ## Motivation
-Optionally add a bit of text describing why this library exists.
+Creating animations that react to the speed of which the user scrolls can be a bit tricky. Most libraries that give this kind of functionality require you to install their entire package. This package tries to solve this by returning an immutable value that serves a singular purpose. 
 
 ## Installation
 
 ```
-yarn add @kaliber/library
+yarn add @kaliber/use-scroll-velocity
 ```
 
 ## Usage
-Short example. If your library has multiple ways to use it, show the most used one and refer to `/example` for further examples.
 
 ```jsx
-import { hello } from 'library'
+import { useScrollVelocity } from '@kaliber/use-scroll-velocity'
 
-function Component() {
-  return <div>{hello()}</div>
+function R3FComponent() {
+    const scrollVelocity = useScrollVelocity()
+    const meshRef = React.useRef()
+
+    useFrame(() => {
+        meshRef.current.rotation.z += scrollVelocity
+    })
+
+    return <mesh ref={meshRef}><boxMesh /></mesh>
 }
 ```
 
 # Reference
-Optionally add a reference, if your library needs it.
+This library is mainly used as an immutable state reference for ThreeJS / R3F. 
 
-![](https://media.giphy.com/media/find-a-good-gif/giphy.gif)
+![](https://media4.giphy.com/media/v1.Y2lkPTc5MGI3NjExMHhxNjBhaGo5bDJ0bmJoMGVsdmk1MzhvcDBoOHh3M2NxeHhhZzIwNiZlcD12MV9pbnRlcm5hbF9naWZfYnlfaWQmY3Q9Zw/pjOTiMEkFKlN8lQXOT/giphy.gif)
 
 ## Disclaimer
 This library is intended for internal use, we provide __no__ support, use at your own risk. It does not import React, but expects it to be provided, which [@kaliber/build](https://kaliberjs.github.io/build/) can handle for you.

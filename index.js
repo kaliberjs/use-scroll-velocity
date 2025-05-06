@@ -1,1 +1,1 @@
-export { hello } from './src/hello'
+export { useScrollVelocity } from './src/useScrollVelocity'
