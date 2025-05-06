@@ -20,6 +20,19 @@ A library that returns an immutable value that signifies the users scroll veloci
 It returns a positive integer on down scroll and a negative integer on up scroll behavior.
 The returned value is lerped, the lerp speed is currently handled by the libary itself, if you need additional smoothing you should either use your own lerp function or use it in conjunction with ThreeJS Math utils lerp.
 
+Example with ThreeJS:
+```js
+const meshRef = React.useRef()
+const lerpSpeed = 0.3
+const scrollVelocity = useScrollVelocity()
+
+const THREELerp = THREE.MathUtils.lerp(
+    meshRef.current.material.uniforms.uScrollVelocity.value,
+    scrollVelocity, 
+    lerpSpeed
+)
+```
+
 ## Motivation
 Creating animations that react to the speed of which the user scrolls can be a bit tricky. Most libraries that give this kind of functionality require you to install their entire package. This package tries to solve this by returning an immutable value that serves a singular purpose. 
 
