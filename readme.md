@@ -1,11 +1,3 @@
-# PUBLISHING
-- Make sure you are added to the kaliber organization on NPM
-- run `yarn publish`
-- Enter a correct version, we adhere to semantic versioning (semver)
-- run `git push`
-- run `git push --tags`
-- Send everybody an email to introduce them to your library!
-
 # useScrollVelocity
 A library that returns an immutable value that signifies the users scroll velocity.
 
